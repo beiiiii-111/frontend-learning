@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>Vue3 字面量入门</title>
+  <!-- 通过 CDN 引入 Vue3 全局构建版（jsdelivr，国内访问更稳） -->
+  <script src="https://cdn.jsdelivr.net/npm/vue@3/dist/vue.global.js"></script>
+  <style>
+    body { font-family: "Microsoft YaHei", sans-serif; padding: 24px; }
+    button { padding: 6px 14px; margin-top: 10px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <!-- #app 是 Vue 挂载的"容器"，里面的 {{ }} 会被 Vue 替换成数据 -->
+  <div id="app">
+    <h1>{{ msg }}</h1>
+    <p>计数：{{ count }}</p>
+    <!-- @click 是 v-on 的简写，绑定点击事件 -->
+    <button @click="add">点我 +1</button>
+  </div>
+
+  <script>
+    // 从全局 Vue 对象解构出 createApp
+    const { createApp } = Vue
+
+    // "字面量"方式：直接传一个配置对象，不经过任何构建工具
+    createApp({
+      // data：组件的数据，返回对象（注意 data 是函数）
+      data() {
+        return {
+          msg: 'Vue 字面量练习',
+          count: 0
+        }
+      },
+      // methods：组件的方法
+      methods: {
+        add() {
+          this.count++
+        }
+      }
+    }).mount('#app')   // mount：把 Vue 应用挂载到 #app 元素上
+  </script>
+</body>
+</html>

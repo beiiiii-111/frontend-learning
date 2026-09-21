@@ -1,0 +1,18 @@
+{
+  "name": "vue-basic-demo",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "node node_modules/vite/bin/vite.js",
+    "build": "node node_modules/vite/bin/vite.js build",
+    "serve": "node node_modules/vite/bin/vite.js preview"
+  },
+  "dependencies": {
+    "element-plus": "^2.14.6",
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.8",
+    "vite": "^8.2.0"
+  }
+}

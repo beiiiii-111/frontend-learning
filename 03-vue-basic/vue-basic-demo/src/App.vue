@@ -4,6 +4,7 @@ import Toggle from './components/Toggle.vue'
 import Todo from './components/Todo.vue'
 import ActivityCard from './components/ActivityCard.vue'
 import ProfileCard from './components/ProfileCard.vue'
+import Student from './components/Student.vue'
 
 const tab = ref('toggle')
 </script>
@@ -28,6 +29,10 @@ const tab = ref('toggle')
       <el-tab-pane label="个人名片" name="profile">
         <ProfileCard />
       </el-tab-pane>
+
+      <el-tab-pane label="学生名单" name="student">
+        <Student />
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -40,7 +45,7 @@ body {
 }
 
 .page {
-  max-width: 640px;
+  max-width: 1040px;
   margin: 0 auto;
   padding: 28px 16px 40px;
 }

@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from "vue";
-import { ElMessage } from "element-plus";
 
 // 一、数据源：学生数组。视图切换只改变怎么显示，不改变这份数据
 // 这份数据从头到尾不会被修改，所以用普通数组就够了，不用 ref
@@ -89,23 +88,46 @@ function scoreColor(score) {
 }
 
 // 五、专业分组：把同一方向的人归到一起。
-// 分组结果同样不会变，所以还是普通数组；这里只用最普通的 for 循环，
+// 分组结果跟着「只看及格」变，所以用 ref 包起来；归类只用最普通的 for 循环，
 // 不用还没学到的 filter / reduce，也不需要用 computed
 const DIRECTIONS = ["前端开发", "后端开发", "数据开发", "测试开发"];
 
-const groupedStudents = [];
-for (const direction of DIRECTIONS) {
-  const members = [];
-  for (const item of students) {
-    if (item.direction === direction) members.push(item);
+function buildGroups(list) {
+  const groups = [];
+  for (const direction of DIRECTIONS) {
+    const members = [];
+    for (const item of list) {
+      if (item.direction === direction) members.push(item);
+    }
+    groups.push({ direction, members });
   }
-  groupedStudents.push({ direction, members });
+  return groups;
 }
 
+// 六、延伸练习 1：只看及格开关。
+// 现在页面上有两处会变：当前视图 + 是否只看及格，各占一个 ref。
+// 显示用的数组单独用一个 ref 存，开关一拨就换成新的数组
+const onlyPass = ref(false);
+const displayStudents = ref([...students]);
+const groupedStudents = ref(buildGroups(students));
+
+function handlePassChange(passOnly) {
+  const list = [];
+  for (const item of students) {
+    if (!passOnly || item.score >= 60) list.push(item);
+  }
+  displayStudents.value = list;
+  groupedStudents.value = buildGroups(list);
+}
+
+// 七、延伸练习 2：查看详情对话框。
+// 一个 ref 存当前选中的学生，一个 ref 控制对话框开和关
+const currentStudent = ref(null);
+const dialogVisible = ref(false);
+
 function showDetail(student) {
-  ElMessage.success(
-    `${student.name}（${student.id}）：${student.direction}，成绩 ${student.score}`,
-  );
+  currentStudent.value = student;
+  dialogVisible.value = true;
 }
 </script>
 
@@ -115,23 +137,32 @@ function showDetail(student) {
       <div>
         <h2 class="page__title">学生名单</h2>
         <p class="page__desc">
-          共 {{ students.length }} 人 · 切换视图用的是 v-if / v-else-if / v-else
+          共 {{ displayStudents.length }} 人 · 切换视图用的是 v-if / v-else-if / v-else
         </p>
       </div>
 
-      <!-- 视图切换：viewMode 一变，模板自动在几个分支之间换 -->
-      <el-radio-group v-model="viewMode">
-        <el-radio-button value="table">表格</el-radio-button>
-        <el-radio-button value="card">卡片</el-radio-button>
-        <el-radio-button value="group">专业分组</el-radio-button>
-        <el-radio-button value="list">名单</el-radio-button>
-      </el-radio-group>
+      <div class="page__controls">
+        <!-- 视图切换：viewMode 一变，模板自动在几个分支之间换 -->
+        <el-radio-group v-model="viewMode">
+          <el-radio-button value="table">表格</el-radio-button>
+          <el-radio-button value="card">卡片</el-radio-button>
+          <el-radio-button value="group">专业分组</el-radio-button>
+          <el-radio-button value="list">名单</el-radio-button>
+        </el-radio-group>
+
+        <!-- 延伸练习：只看及格。开关一拨，handlePassChange 换一个新的显示数组 -->
+        <el-switch
+          v-model="onlyPass"
+          active-text="只看及格"
+          @change="handlePassChange"
+        />
+      </div>
     </header>
 
     <!-- ===== 条件渲染：下面四块同一时间只会出现一块 ===== -->
 
     <!-- 第一块：表格模式 -->
-    <el-table v-if="viewMode === 'table'" :data="students" stripe border>
+    <el-table v-if="viewMode === 'table'" :data="displayStudents" stripe border>
       <el-table-column prop="id" label="学号" width="120" />
       <el-table-column prop="name" label="姓名" width="110" />
       <el-table-column prop="className" label="班级" width="120" />
@@ -162,7 +193,7 @@ function showDetail(student) {
     <!-- 第二块：卡片模式 -->
     <el-row v-else-if="viewMode === 'card'" :gutter="16">
       <el-col
-        v-for="item in students"
+        v-for="item in displayStudents"
         :key="item.id"
         :xs="24"
         :sm="12"
@@ -206,11 +237,9 @@ function showDetail(student) {
 
     <!-- 第三块：专业分组模式（延伸练习：在判断链上再加一个 v-else-if 分支） -->
     <div v-else-if="viewMode === 'group'" class="group-wrap">
-      <section
-        v-for="group in groupedStudents"
-        :key="group.direction"
-        class="group"
-      >
+      <!-- 没有人的方向直接不显示：外层 template 负责循环，内层元素才放 v-if -->
+      <template v-for="group in groupedStudents" :key="group.direction">
+        <section v-if="group.members.length" class="group">
         <h3 class="group__title">
           {{ group.direction }}
           <span class="group__count">{{ group.members.length }} 人</span>
@@ -231,12 +260,13 @@ function showDetail(student) {
             </el-tag>
           </li>
         </ul>
-      </section>
+        </section>
+      </template>
     </div>
 
     <!-- 第四块：名单模式，一行一人，人多了用这个（v-else 兜底，不写条件） -->
     <ul v-else class="name-list">
-      <li v-for="item in students" :key="item.id" class="name-list__item">
+      <li v-for="item in displayStudents" :key="item.id" class="name-list__item">
         <el-avatar :size="32" class="avatar">{{ item.name.charAt(0) }}</el-avatar>
         <span class="name-list__name">{{ item.name }}</span>
         <span class="name-list__meta"
@@ -250,6 +280,34 @@ function showDetail(student) {
         </el-tag>
       </li>
     </ul>
+
+    <!-- 延伸练习：查看详情对话框。dialogVisible 一变真就弹出 / 关闭 -->
+    <el-dialog
+      v-model="dialogVisible"
+      :title="currentStudent ? currentStudent.name + ' · 详细信息' : '详细信息'"
+      width="420"
+    >
+      <el-descriptions v-if="currentStudent" :column="1" border>
+        <el-descriptions-item label="学号">{{ currentStudent.id }}</el-descriptions-item>
+        <el-descriptions-item label="姓名">{{ currentStudent.name }}</el-descriptions-item>
+        <el-descriptions-item label="班级">{{ currentStudent.className }}</el-descriptions-item>
+        <el-descriptions-item label="方向">{{ currentStudent.direction }}</el-descriptions-item>
+        <el-descriptions-item label="成绩">
+          <span class="score" :style="{ color: scoreColor(currentStudent.score) }">
+            {{ currentStudent.score }}
+          </span>
+        </el-descriptions-item>
+        <el-descriptions-item label="状态">
+          <el-tag :type="STATUS_MAP[currentStudent.status].type" effect="light">
+            {{ STATUS_MAP[currentStudent.status].text }}
+          </el-tag>
+        </el-descriptions-item>
+      </el-descriptions>
+
+      <template #footer>
+        <el-button type="primary" @click="dialogVisible = false">知道了</el-button>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -267,6 +325,13 @@ function showDetail(student) {
   align-items: center;
   justify-content: space-between;
   margin-bottom: 16px;
+}
+
+.page__controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  align-items: center;
 }
 
 .page__title {

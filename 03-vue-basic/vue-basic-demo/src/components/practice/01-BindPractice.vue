@@ -19,7 +19,7 @@ const avatarIndex = ref(0);
 
 // 皮肤主题：切换后靠 :class 和 :style 改变卡片外观
 const themes = [
-  { label: "普通", color: "#909399" },
+  { label: "普通", color: "#5a5f66" },
   { label: "黄金", color: "#e6a23c" },
   { label: "铂金", color: "#409eff" },
 ];
@@ -114,7 +114,7 @@ function nextAvatar() {
 }
 
 .member-card {
-  --main-color: #909399;
+  --main-color: #303133;
   display: flex;
   align-items: center;
   gap: 16px;
@@ -155,7 +155,7 @@ function nextAvatar() {
   font-size: 12px;
   font-weight: 400;
   border-radius: 10px;
-  color: #909399;
+  color: #303133;
   background: #f4f4f5;
 }
 
@@ -167,7 +167,7 @@ function nextAvatar() {
 .member-card__meta {
   margin: 4px 0 8px;
   font-size: 13px;
-  color: #909399;
+  color: #303133;
 }
 
 .member-card__actions {

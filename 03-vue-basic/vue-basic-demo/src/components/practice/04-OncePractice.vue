@@ -116,7 +116,7 @@ const footer = {
   line-height: 1.8;
   text-align: left;
   font-family: inherit;
-  color: #606266;
+  color: #303133;
 }
 
 .once-box__body--left p {
@@ -126,7 +126,7 @@ const footer = {
 .once-box__foot {
   padding: 8px 12px;
   font-size: 12px;
-  color: #909399;
+  color: #303133;
   border-top: 1px dashed #ebeef5;
 }
 

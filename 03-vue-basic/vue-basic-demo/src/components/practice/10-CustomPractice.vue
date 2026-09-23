@@ -174,7 +174,7 @@ const vHighlight = {
 
 .practice__hint {
   font-size: 13px;
-  color: #909399;
+  color: #303133;
 }
 
 .list {
@@ -205,7 +205,7 @@ const vHighlight = {
 }
 
 .list__class {
-  color: #909399;
+  color: #303133;
   font-size: 13px;
 }
 
@@ -229,13 +229,13 @@ const vHighlight = {
 }
 
 .api td {
-  color: #606266;
+  color: #303133;
 }
 
 .signature {
   margin-top: 12px;
   font-size: 13px;
-  color: #606266;
+  color: #303133;
   line-height: 1.9;
 }
 

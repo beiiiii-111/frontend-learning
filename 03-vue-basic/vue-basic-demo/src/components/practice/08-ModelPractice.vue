@@ -208,7 +208,7 @@ const handWritten = ref("");
 }
 
 .preview th {
-  color: #909399;
+  color: #303133;
   font-weight: 500;
 }
 
@@ -221,7 +221,7 @@ const handWritten = ref("");
   padding: 10px 12px;
   font-size: 12px;
   line-height: 1.7;
-  color: #909399;
+  color: #303133;
   border-top: 1px dashed #ebeef5;
 }
 
@@ -265,7 +265,7 @@ const handWritten = ref("");
   padding: 8px 10px;
   border-radius: 6px;
   background: #f5f7fa;
-  color: #606266;
+  color: #303133;
   font-size: 12px;
   white-space: pre-wrap;
   word-break: break-all;

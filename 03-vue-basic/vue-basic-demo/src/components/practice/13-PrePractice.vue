@@ -124,7 +124,7 @@ const count = ref(0);
 }
 
 .compare__body--pre {
-  color: #909399;
+  color: #303133;
   font-family: Menlo, Consolas, monospace;
   font-size: 13px;
 }
@@ -141,7 +141,7 @@ const count = ref(0);
 .compare__foot {
   padding: 8px 12px;
   font-size: 12px;
-  color: #909399;
+  color: #303133;
   border-top: 1px dashed #ebeef5;
 }
 
@@ -176,7 +176,7 @@ const count = ref(0);
 }
 
 .api td {
-  color: #606266;
+  color: #303133;
 }
 
 code {

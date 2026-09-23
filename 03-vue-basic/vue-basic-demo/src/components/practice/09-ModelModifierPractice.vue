@@ -177,7 +177,7 @@ function subtotal() {
   list-style: none;
   font-size: 12px;
   line-height: 1.9;
-  color: #606266;
+  color: #303133;
   font-family: Menlo, Consolas, monospace;
 }
 

@@ -124,7 +124,7 @@ function reload() {
   padding: 8px 12px;
   font-size: 12px;
   line-height: 1.7;
-  color: #909399;
+  color: #303133;
 }
 
 .code-pair {
@@ -135,7 +135,7 @@ function reload() {
 
 .code-pair__head {
   font-size: 13px;
-  color: #606266;
+  color: #303133;
   margin-bottom: 6px;
 }
 

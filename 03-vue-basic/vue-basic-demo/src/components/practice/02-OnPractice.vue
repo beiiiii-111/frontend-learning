@@ -144,7 +144,7 @@ function onceTip() {
 
 .practice__hint {
   font-size: 13px;
-  color: #909399;
+  color: #303133;
 }
 
 .event-box {
@@ -152,7 +152,7 @@ function onceTip() {
   border: 1px dashed #dcdfe6;
   border-radius: 8px;
   font-size: 13px;
-  color: #606266;
+  color: #303133;
   cursor: pointer;
   max-width: 420px;
 }

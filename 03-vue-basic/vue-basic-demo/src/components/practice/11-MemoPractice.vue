@@ -119,7 +119,7 @@ function stamp() {
 
 .hint {
   font-size: 13px;
-  color: #909399;
+  color: #303133;
 }
 
 .layout {
@@ -178,7 +178,7 @@ function stamp() {
 }
 
 .row__cls {
-  color: #909399;
+  color: #303133;
 }
 
 .row__score {
@@ -187,7 +187,7 @@ function stamp() {
 }
 
 .row__stamp {
-  color: #c0c4cc;
+  color: #303133;
   font-family: Menlo, Consolas, monospace;
   font-size: 12px;
   text-align: right;

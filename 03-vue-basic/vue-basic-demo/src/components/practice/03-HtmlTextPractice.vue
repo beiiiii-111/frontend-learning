@@ -105,7 +105,7 @@ const custom = ref(
 .compare__foot {
   padding: 8px 12px;
   font-size: 12px;
-  color: #909399;
+  color: #303133;
   border-top: 1px dashed #ebeef5;
 }
 

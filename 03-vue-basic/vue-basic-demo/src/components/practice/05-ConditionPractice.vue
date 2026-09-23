@@ -99,9 +99,9 @@ const todoCount = ref(3);
 }
 
 .tip--gray {
-  color: #606266;
+  color: #303133;
   background: #f4f4f5;
-  border-left-color: #909399;
+  border-left-color: #303133;
 }
 
 .tip--blue {
@@ -137,7 +137,7 @@ const todoCount = ref(3);
 }
 
 .chain td {
-  color: #606266;
+  color: #303133;
 }
 
 .chain code {

@@ -142,13 +142,13 @@ const ifTab = ref("info");
 .panel__label {
   margin: 0 0 8px;
   font-size: 13px;
-  color: #606266;
+  color: #303133;
 }
 
 .panel__hint {
   margin: 8px 0 0;
   font-size: 12px;
-  color: #909399;
+  color: #303133;
 }
 
 .choice {
@@ -170,7 +170,7 @@ const ifTab = ref("info");
 }
 
 .choice td {
-  color: #606266;
+  color: #303133;
 }
 
 .choice code {

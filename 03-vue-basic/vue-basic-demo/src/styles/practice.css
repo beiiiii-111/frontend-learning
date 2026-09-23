@@ -30,6 +30,26 @@
   margin-top: 16px;
 }
 
+/* el-alert 提示块默认说明文字是浅灰，浅色背景上看不清，统一加深 */
+.practice__note .el-alert__title {
+  color: #1f2329;
+  font-weight: 600;
+}
+
+.practice__note .el-alert__description {
+  color: #303133;
+  line-height: 1.9;
+}
+
+.practice__note .el-alert__description code {
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #b03a2e;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 12px;
+}
+
 /* 练习册外壳：指令名一行排开，放不下时自动换行 */
 .practice-book__tabs {
   margin-top: 4px;

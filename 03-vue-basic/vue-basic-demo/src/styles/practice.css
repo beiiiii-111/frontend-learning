@@ -30,13 +30,14 @@
   margin-top: 16px;
 }
 
-/* el-alert 提示块默认说明文字是浅灰，浅色背景上看不清，统一加深 */
+/* el-alert 会把说明文字直接染成类型主题色（成功=浅绿/info=浅灰蓝），
+   在同色浅底上看不清。它的选择器是三级，这里用四级压过去 */
 .practice__note .el-alert__title {
   color: #1f2329;
   font-weight: 600;
 }
 
-.practice__note .el-alert__description {
+.el-alert.practice__note.is-light .el-alert__description {
   color: #303133;
   line-height: 1.9;
 }

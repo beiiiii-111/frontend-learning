@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>v-cloak 演示</title>
+    <style>
+      /* 真正让元素隐身的是这一条属性选择器，漏写了就等于没加 v-cloak */
+      [v-cloak] {
+        display: none;
+      }
+
+      body {
+        margin: 0;
+        padding: 14px;
+        font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+        font-size: 14px;
+        color: #303133;
+      }
+
+      .box {
+        padding: 12px 14px;
+        border: 1px solid #e4e7ed;
+        border-radius: 8px;
+        background: #fff;
+        line-height: 1.9;
+      }
+
+      .box__title {
+        margin: 0 0 6px;
+        font-weight: 600;
+      }
+
+      .box__meta {
+        margin: 0;
+        font-size: 13px;
+        color: #909399;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 这段模板在页面加载时就存在，此时 Vue 还没开始工作 -->
+    <div id="app" class="box">
+      <p class="box__title">公告标题：{{ notice }}</p>
+      <p class="box__meta">共 {{ items.length }} 条待办，更新时间 {{ time }}</p>
+    </div>
+
+    <script src="/vue.global.js"></script>
+    <script>
+      // 地址栏上的 mode 决定这一页要不要加 v-cloak
+      var mode = new URLSearchParams(location.search).get("mode");
+      if (mode === "cloak") {
+        document.getElementById("app").setAttribute("v-cloak", "");
+      }
+
+      // 模拟「1.2 秒之后才拿到数据」，方便看清挂载前的那段空档
+      setTimeout(function () {
+        Vue.createApp({
+          data: function () {
+            return {
+              notice: "实训动员通知",
+              items: ["带电脑", "带校园卡", "准时到场"],
+              time: new Date().toLocaleTimeString(),
+            };
+          },
+        }).mount("#app");
+      }, 1200);
+    </script>
+  </body>
+</html>

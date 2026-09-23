@@ -1,0 +1,36 @@
+/* 指令练习册 13 个组件共用的基础样式。
+   各组件自己的 <style scoped> 里只写它独有的部分，标题、说明这些公共外观放在这里统一维护。 */
+
+.practice {
+  padding: 4px 2px;
+}
+
+.practice__title {
+  margin: 0 0 6px;
+  font-size: 17px;
+  font-weight: 600;
+  color: #1f2329;
+}
+
+.practice__desc {
+  margin: 0 0 14px;
+  font-size: 13px;
+  line-height: 1.9;
+  color: #606266;
+}
+
+.practice__subtitle {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #303133;
+}
+
+.practice__note {
+  margin-top: 16px;
+}
+
+/* 练习册外壳：指令名一行排开，放不下时自动换行 */
+.practice-book__tabs {
+  margin-top: 4px;
+}

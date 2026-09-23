@@ -5,6 +5,7 @@ import Todo from './components/Todo.vue'
 import ActivityCard from './components/ActivityCard.vue'
 import ProfileCard from './components/ProfileCard.vue'
 import Student from './components/Student.vue'
+import DirectiveBook from './components/DirectiveBook.vue'
 
 const tab = ref('toggle')
 </script>
@@ -32,6 +33,10 @@ const tab = ref('toggle')
 
       <el-tab-pane label="学生名单" name="student">
         <Student />
+      </el-tab-pane>
+
+      <el-tab-pane label="指令练习册" name="book">
+        <DirectiveBook />
       </el-tab-pane>
     </el-tabs>
   </div>

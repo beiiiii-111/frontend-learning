@@ -19,8 +19,11 @@
 frontend-learning
 ├── 01-vue-literal      # 练习1：不借助构建工具，CDN 引入 Vue3（字面量方式）
 ├── 02-vite-vue-demo    # 练习2：Vite 脚手架创建的标准 Vue3 工程
+├── 03-vue-basic        # 练习3：vue-basic-demo，五个基础练习 + 13 个指令练习
 └── README.md
 ```
+
+> `03-vue-basic/vue-basic-demo/` 里有自己的 README，列了每个练习对应的知识点。
 
 ## 学习进度
 

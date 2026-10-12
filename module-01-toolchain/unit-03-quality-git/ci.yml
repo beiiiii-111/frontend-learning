@@ -1,0 +1,66 @@
+# 流水线示例
+#
+# 用法：
+#   - GitHub：放到 .github/workflows/ci.yml
+#   - GitLab CI：改名为 .gitlab-ci.yml，把 steps 改成 script，见文件末尾注释
+#
+# 触发时机：push 到 main、以及所有合并请求。
+# 三件事：装依赖 → 跑检查 → 跑构建。任一步失败，合并按钮就点不动。
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22.12
+          cache: pnpm
+
+      # 用 --frozen-lockfile：锁文件和 package.json 不一致就直接失败，
+      # 防止有人改了依赖却没提交锁文件
+      - name: 安装依赖
+        run: pnpm install --frozen-lockfile
+
+      - name: 代码检查
+        run: pnpm lint
+
+      - name: 格式检查
+        run: pnpm format:check
+
+      - name: 构建
+        run: pnpm build
+
+# ---------------------------------------------------------------------------
+# GitLab CI 等价写法（另存为 .gitlab-ci.yml）：
+#
+# image: node:22.12
+#
+# stages:
+#   - quality
+#
+# quality:
+#   stage: quality
+#   before_script:
+#     - corepack enable && corepack prepare pnpm@9 --activate
+#   script:
+#     - pnpm install --frozen-lockfile
+#     - pnpm lint
+#     - pnpm format:check
+#     - pnpm build
+#   rules:
+#     - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+#     - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+# ---------------------------------------------------------------------------

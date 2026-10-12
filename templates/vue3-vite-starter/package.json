@@ -1,0 +1,34 @@
+{
+  "name": "vue3-vite-starter",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "vue": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@vitejs/plugin-vue": "^6.0.8",
+    "eslint": "^9.0.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "globals": "^15.0.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
+    "prettier": "^3.4.0",
+    "vite": "^8.2.0"
+  },
+  "lint-staged": {
+    "*.{js,vue}": ["eslint --fix"],
+    "*.{js,vue,json,css,md}": ["prettier --write"]
+  }
+}

@@ -5,6 +5,7 @@ import { ref } from 'vue'
 import ProfileCard from './views/unit-04/ProfileCard.vue'
 import Toggle from './views/unit-04/Toggle.vue'
 import DirectiveBook from './views/unit-04/DirectiveBook.vue'
+import EventPractice from './views/unit-04/practice/14-EventPractice.vue'
 
 // 单元 05 · 计算属性、侦听器与渲染控制
 import Student from './views/unit-05/Student.vue'
@@ -33,6 +34,7 @@ const tab06 = ref('model')
           <el-tab-pane label="个人名片页" name="profile"><ProfileCard /></el-tab-pane>
           <el-tab-pane label="事件与状态" name="toggle"><Toggle /></el-tab-pane>
           <el-tab-pane label="指令练习册" name="book"><DirectiveBook /></el-tab-pane>
+          <el-tab-pane label="事件综合练习" name="event"><EventPractice /></el-tab-pane>
         </el-tabs>
       </el-tab-pane>
 

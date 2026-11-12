@@ -1,0 +1,21 @@
+<template>
+  <view class="content">
+    <text class="title">关于本博客</text>
+    <text class="desc">这是 uni-app + Vue3 练习项目 miniblog</text>
+  </view>
+</template>
+
+<style lang="scss">
+.content {
+  padding: 40rpx;
+}
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+.desc {
+  margin-top: 20rpx;
+  font-size: 28rpx;
+  color: #666;
+}
+</style>

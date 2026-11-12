@@ -1,0 +1,104 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "MiniBlog",
+        "enablePullDownRefresh": true,
+        "backgroundTextStyle": "dark"
+      }
+    },
+    {
+      "path": "pages/detail/detail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "文章详情",
+        "enablePullDownRefresh": false
+      }
+    },
+    {
+      "path": "pages/publish/publish",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "发布文章"
+      }
+    },
+    {
+      "path": "pages/drafts/drafts",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "草稿箱"
+      }
+    },
+    {
+      "path": "pages/myposts/myposts",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的发布"
+      }
+    },
+    {
+      "path": "pages/localdetail/localdetail",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "文章详情"
+      }
+    },
+    {
+      "path": "pages/favorite/favorite",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的收藏"
+      }
+    },
+    {
+      "path": "pages/profile/profile",
+      "style": {
+        "navigationStyle": "custom",
+        "navigationBarTitleText": "我的"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "MiniBlog",
+    "navigationBarBackgroundColor": "#2563eb",
+    "backgroundColor": "#f5f6f8"
+  },
+  "tabBar": {
+    "color": "#9aa3af",
+    "selectedColor": "#2563eb",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "static/tabbar/home.png",
+        "selectedIconPath": "static/tabbar/home-active.png"
+      },
+      {
+        "pagePath": "pages/favorite/favorite",
+        "text": "收藏",
+        "iconPath": "static/tabbar/fav.png",
+        "selectedIconPath": "static/tabbar/fav-active.png"
+      },
+      {
+        "pagePath": "pages/publish/publish",
+        "text": "发布",
+        "iconPath": "static/tabbar/publish.png",
+        "selectedIconPath": "static/tabbar/publish-active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "static/tabbar/user.png",
+        "selectedIconPath": "static/tabbar/user-active.png"
+      }
+    ]
+  },
+  "easycom": {
+    "autoscan": true
+  }
+}
